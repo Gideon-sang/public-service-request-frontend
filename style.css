@@ -1,0 +1,112 @@
+/* ---------- Design tokens (light + dark) ---------- */
+/* ---------- Design tokens: Murang'a County colours (green, gold, black, white) ---------- */
+:root {
+  --ink: #17201b; --muted: #55625a; --paper: #f5f7f4; --card: #ffffff; --line: #dfe5e0;
+  --green: #0b6b3a; --green-ink: #ffffff; --gold: #d4a017; --header: #0b6b3a; --header-ink: #ffffff;
+  --pending: #b45309; --progress: #1d6fb8; --resolved: #0b6b3a;
+  --radius: 10px; --font: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --ink: #e9efe9; --muted: #9db0a4; --paper: #0f1713; --card: #17211b; --line: #2a382f;
+          --green: #2fa968; --green-ink: #06120b; --gold: #e6b422; --header: #0a3a22; --header-ink: #ffffff;
+          --pending: #e8923a; --progress: #5aa7e8; --resolved: #3fb97a; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: var(--font); background: var(--paper); color: var(--ink); line-height: 1.5; }
+h1, h2, h3 { line-height: 1.2; margin: 0 0 .5rem; }
+h3 { font-size: 1.05rem; }
+.muted { color: var(--muted); font-size: .9rem; }
+.container { max-width: 1080px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+
+/* ---------- Top bar ---------- */
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: .75rem 1rem;
+          background: var(--green); color: var(--green-ink); flex-wrap: wrap; }
+.brand { font-weight: 700; display: flex; align-items: center; gap: .6rem; }
+.logo { display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 6px;
+        background: var(--green-ink); color: var(--green); font-size: .85rem; }
+#nav { display: flex; align-items: center; gap: .75rem; font-size: .9rem; }
+.role { font-style: normal; border: 1px solid currentColor; border-radius: 999px; padding: 0 .5rem; margin-left: .25rem; font-size: .8rem; }
+
+/* ---------- Components ---------- */
+.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.25rem; margin-bottom: 1rem; }
+.btn { font: inherit; font-weight: 600; cursor: pointer; border: 1px solid var(--green); background: var(--green);
+       color: var(--green-ink); padding: .55rem 1rem; border-radius: 8px; }
+.btn.ghost { background: transparent; color: inherit; border-color: currentColor; }
+.btn.small { padding: .3rem .7rem; font-size: .85rem; }
+.btn:hover { filter: brightness(1.08); }
+:focus-visible { outline: 3px solid var(--progress); outline-offset: 2px; }
+label { display: block; font-weight: 600; font-size: .9rem; margin: .8rem 0 .25rem; }
+input, select, textarea { width: 100%; font: inherit; color: var(--ink); background: var(--paper); border: 1px solid var(--line);
+                          border-radius: 8px; padding: .55rem .7rem; }
+textarea { min-height: 96px; resize: vertical; }
+form .btn { margin-top: 1rem; }
+.error { color: var(--pending); font-size: .9rem; min-height: 1.2rem; margin-top: .5rem; }
+.row { display: flex; justify-content: space-between; align-items: center; gap: .5rem; flex-wrap: wrap; }
+.tabs { display: flex; gap: .5rem; margin-bottom: 1rem; }
+.tabs .btn { flex: 1; }
+.tabs .btn:not(.active) { background: transparent; color: var(--ink); border-color: var(--line); }
+.auth { max-width: 420px; margin: 2rem auto; }
+
+/* ---------- Status badges ---------- */
+.badge { font-size: .8rem; font-weight: 700; padding: .15rem .65rem; border-radius: 999px; border: 1.5px solid currentColor; }
+.st-pending { color: var(--pending); } .st-inprogress { color: var(--progress); } .st-resolved { color: var(--resolved); }
+
+/* ---------- Layout ---------- */
+.split { display: grid; grid-template-columns: minmax(280px, 380px) 1fr; gap: 1.5rem; align-items: start; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+.stat { background: var(--card); border: 1px solid var(--line); border-left: 5px solid var(--green); border-radius: var(--radius); padding: .9rem 1rem; }
+.stat b { display: block; font-size: 1.8rem; line-height: 1.1; }
+.stat.pending { border-left-color: var(--pending); } .stat.progress { border-left-color: var(--progress); }
+.bar { display: flex; height: 14px; border-radius: 999px; overflow: hidden; background: var(--line); margin: .5rem 0; }
+.bar span { height: 100%; transition: width .4s; }
+.legend { display: flex; gap: 1rem; flex-wrap: wrap; font-size: .85rem; }
+.filters { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.filters input { flex: 2 1 200px; } .filters select { flex: 1 1 140px; }
+
+/* ---------- Request card ---------- */
+.thumb { max-width: 100%; max-height: 220px; border-radius: 8px; border: 1px solid var(--line); margin: .5rem 0; }
+.note { background: var(--paper); border-left: 4px solid var(--progress); padding: .5rem .75rem; border-radius: 4px; font-size: .9rem; }
+.admin-box { display: grid; grid-template-columns: 150px 1fr auto; gap: .5rem; margin-top: .75rem; align-items: center; }
+details { margin-top: .75rem; font-size: .9rem; } summary { cursor: pointer; color: var(--muted); }
+.timeline { margin: .5rem 0 0; padding-left: 1.1rem; }
+
+.empty { text-align: center; color: var(--muted); padding: 2rem 1rem; border: 2px dashed var(--line); border-radius: var(--radius); }
+.toast { position: fixed; bottom: 1.25rem; left: 50%; transform: translate(-50%, 150%); background: var(--ink); color: var(--paper);
+         padding: .7rem 1.2rem; border-radius: 8px; transition: transform .25s; z-index: 10; }
+.toast.show { transform: translate(-50%, 0); }
+@media (max-width: 760px) { .split { grid-template-columns: 1fr; } .admin-box { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+/* ---------- County branding & extras ---------- */
+[hidden] { display: none !important; }
+body { min-height: 100vh; display: flex; flex-direction: column; }
+main.container { flex: 1; width: 100%; }
+.topbar { background: var(--header); color: var(--header-ink); border-bottom: 4px solid var(--gold); padding: .6rem 1rem; }
+.brand { gap: .8rem; }
+.crest, .logo-fallback { width: 48px; height: 48px; border-radius: 50%; flex: none; }
+.crest { background: #fff; padding: 3px; object-fit: contain; }
+.logo-fallback { display: grid; place-items: center; background: var(--gold); color: #111; font-weight: 700; }
+.brand-text strong { display: block; font-size: 1.05rem; line-height: 1.2; }
+.brand-text small { opacity: .85; font-size: .72rem; letter-spacing: .08em; }
+.auth { border-top: 5px solid var(--gold); }
+.card h2, .card h3 { color: var(--ink); }
+.stat { border-left-color: var(--green); }
+.footer { background: #111; color: #d8ddd9; text-align: center; padding: 1.1rem 1rem; font-size: .85rem; border-top: 4px solid var(--gold); }
+.footer b { color: var(--gold); }
+
+/* Status tracker: Pending -> In Progress -> Resolved */
+.steps { display: flex; list-style: none; padding: 0; margin: .7rem 0; counter-reset: s; }
+.steps li { flex: 1; text-align: center; position: relative; padding-top: 1.6rem; font-size: .78rem; font-weight: 600; color: var(--muted); }
+.steps li::before { counter-increment: s; content: counter(s); position: absolute; top: 0; left: 50%; transform: translateX(-50%); z-index: 1;
+                    width: 1.3rem; height: 1.3rem; border-radius: 50%; display: grid; place-items: center; font-size: .75rem; background: var(--line); color: var(--ink); }
+.steps li::after { content: ''; position: absolute; top: .62rem; left: -50%; width: 100%; height: 2px; background: var(--line); }
+.steps li:first-child::after { display: none; }
+.steps li.done::before, .steps li.current::before, .steps li.done::after, .steps li.current::after { background: var(--green); color: var(--green-ink); }
+.steps li.current { color: var(--ink); }
+
+/* Requests by category */
+.cat { display: grid; grid-template-columns: 150px 1fr 2rem; gap: .6rem; align-items: center; font-size: .88rem; margin: .4rem 0; }
+.track { background: var(--line); border-radius: 999px; height: 10px; overflow: hidden; }
+.track i { display: block; height: 100%; background: var(--gold); }
+.cat b { text-align: right; }
+@media (max-width: 760px) { .cat { grid-template-columns: 110px 1fr 2rem; } }

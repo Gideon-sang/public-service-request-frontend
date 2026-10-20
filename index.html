@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Murang'a County Government - report and track public service requests.">
+  <title>Public Service Request System | Murang'a County</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <!-- Put the official logo at assets/logo.png. Until then a neutral badge is shown. -->
+      <img class="crest" src="assets/logo.png" alt="Murang'a County Government logo"
+           onerror="this.hidden=true;document.getElementById('logoFallback').hidden=false">
+      <span id="logoFallback" class="logo-fallback" hidden aria-hidden="true">MC</span>
+      <span class="brand-text">
+        <strong>Murang'a County Government</strong>
+        <small>PUBLIC SERVICE REQUEST SYSTEM</small>
+      </span>
+    </div>
+    <nav id="nav"></nav>
+  </header>
+  <main id="app" class="container"></main>
+  <footer class="footer">
+    <div><b>Murang'a County Government</b> | Growing Together</div>
+  
+  </footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
